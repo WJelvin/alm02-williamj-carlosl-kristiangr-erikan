@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Fortune teller</title>
+    </h:head>
+    <h:body>
+
+        <h:form id="theForm">
+            Your first name: 
+            <h:inputText id="firstName" value="#{controllerBean.firstName}" onfocus="this.select()">
+                <f:validateLength minimum="3" maximum="20"></f:validateLength>
+            </h:inputText>
+            <br/>
+            
+            Your last name: 
+            <h:inputText id="lastName" value="#{controllerBean.lastName}" onfocus="this.select()">
+                <f:validateLength minimum="3" maximum="20"></f:validateLength>
+            </h:inputText>
+            <br/>
+            
+            Your age: 
+            <h:inputText id="age" value="#{controllerBean.age}" onfocus="this.select()">
+                <f:validateRequired></f:validateRequired>
+                <f:validateDoubleRange minimum="1" ></f:validateDoubleRange>
+            </h:inputText>
+            
+            <br/><br/>
+            <h:commandButton value="Predict my future   " action="#{controllerBean.calculateFortune()}">
+            </h:commandButton>
+        </h:form>
+        <br/>
+        <h:outputText value="#{controllerBean.fortune}"></h:outputText><br/>
+
+    </h:body>
+</html>
+
