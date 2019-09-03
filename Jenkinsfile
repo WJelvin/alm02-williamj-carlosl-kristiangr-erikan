@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Building project, running tests and publishing test results') {
             agent {
-                docker{ { image 'maven:3.3.3' }}
+                docker{ image 'maven:3.3.3' }
             }
             steps {
                 sh 'mvn clean install test'
