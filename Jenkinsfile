@@ -26,7 +26,7 @@ pipeline {
                     ])
                 }
                 success {
-                    archive "target/fortune-teller.war"
+                    archive "target/ALM02-1.0-SNAPSHOT.war"
                 }
             } 
         }         
@@ -35,8 +35,10 @@ pipeline {
             agent any
             steps{
                 sh 'export PATH=/opt/glassfish-4.1.1/bin/asadmin:$PATH'
-                sh 'asadmin --port 4848 deploy --force --name fortune-teller-${DEPLOY_ENV} --contextroot fortune-teller-${DEPLOY_ENV} target/fortune-teller.war'
+                sh 'asadmin --port 4848 deploy --force --name fortune-teller-${DEPLOY_ENV} --contextroot fortune-teller-${DEPLOY_ENV} target/ALM02-1.0-SNAPSHOT.war'
             }
         } 
     }
 }
+
+
