@@ -8,6 +8,15 @@ public class Person implements Serializable{
     private String lastName;
     private int age;
 
+    //Constructor
+    public Person( String firstName, String lastName,int age) {
+        this.age = age;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public Person() {}
+
     public String getFirstName() {
         return firstName;
     }
