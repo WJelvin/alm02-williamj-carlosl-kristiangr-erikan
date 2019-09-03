@@ -1,4 +1,4 @@
-package Test;
+package com.example.alm02;
 
 import com.example.alm02.RandomFactor;
 import org.junit.Test;
@@ -11,11 +11,13 @@ public class RandomFactorTest {
     
     @Test
     public void testRandomNumberBetween1And10() {
-        int randomNumber = rf.numberBetween1And10();
-        
-        for (int i = 0; i < 200; i++) {
-            assertTrue(randomNumber <= 10);
-            assertTrue(randomNumber > 0);
+        int max = 10;
+        int min = 1;
+
+        for (int i = 0; i < 10000; i++) {
+            int random = rf.numberBetween1And10();
+            //System.out.println(random);
+            assertTrue(max >= random && min <= random);
         }
         
     }
