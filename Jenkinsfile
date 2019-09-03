@@ -9,14 +9,8 @@ pipeline {
                 docker{ image 'rasilva1986/java-maven.:alm'}
             }   
             steps {
-                sh 'mvn clean'
+                sh 'mvn clean install test'
             }
-			steps {
-				sh 'mvn install'
-			}
-			steps {
-				sh 'mvn test'
-			}
             post {
                 always {            
                     junit 'target/surefire-reports/*.xml'
