@@ -1,19 +1,8 @@
-pipeline{
-    agent any
-    parameters{
-            choice(name: 'DEPLOY_ENV',choices:['INT','STAGE','PROD','TEST'], description: 'The enviroment that the artefact will be deployed to')
-            }
-            stages{
-                stage('Building project, running tests and and publishing results'){
-                agent { docker { image 'maven:3.3.3' }}
-            }
-
-}
 
 pipeline {
     agent any
     parameters {
-        choice(name: 'DEPLOY_ENV', choices: ['INT', 'STAGE', 'PROD'],  description: 'The target environment to deploy artifacts')
+        choice(name: 'DEPLOY_ENV', choices: ['INT', 'STAGE', 'PROD','TEST'],  description: 'The target environment to deploy artifacts')
     }
     stages {
         stage('Building project, running tests and publishing test results') {
@@ -45,7 +34,7 @@ pipeline {
             agent any
             steps{
                 sh 'export PATH=/opt/glassfish-4.1.1/bin/asadmin:$PATH'
-                sh 'asadmin --port 4848 deploy --force --name fortuneTeller-${DEPLOY_ENV} --contextroot calculator-${DEPLOY_ENV} target/calc-jsf-1.0.war'
+                sh 'asadmin --port 4848 deploy --force --name ALM02-${DEPLOY_ENV} --contextroot ALM02-${DEPLOY_ENV} target/ALM02-1.0-SNAPSHOT.war'
             }
         }
     }
