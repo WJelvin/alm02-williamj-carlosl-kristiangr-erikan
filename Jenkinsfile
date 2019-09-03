@@ -1,7 +1,7 @@
 pipeline {
     agent any
     parameters {
-        choice(name: 'DEPLOY_ENV', choices: ['int', 'stage', 'prod'],  description: 'The target environment to deploy artifacts')
+        choice(name: 'DEPLOY_ENV', choices: ['int', 'stage', 'prod', 'test'],  description: 'The target environment to deploy artifacts')
     }
     stages {       
         stage('Building project, running tests and publishing test results') {
