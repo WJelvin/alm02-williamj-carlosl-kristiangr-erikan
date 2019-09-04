@@ -10,19 +10,17 @@ public class Translator implements Serializable {
         
         String prediction = "Your life is void, it is.";
         
-        if (firstName.contains("Mike") && lastName.equals("Hunt") && age < 8) {
-            prediction =  "Though will haveth tough upbringing.";
+        if ((firstName.equals("Mike") && lastName.equals("Hunt")) && age == 8) {
+            prediction =  "Thou will haveth tough upbringing.";
         }
         
         if (age == 17) {
             prediction = "For one more year your life will still be bad.";
         }
         
-        if (randomNumber < 5) {
-            prediction += " This sentenced has random number less than 5. Same rating we give you!";
+        if (randomNumber < 3) {
+            prediction = "This sentenced has a random number that is less than 3. Same rating we give you!";
         }
-        
-        
         
         return prediction;
         

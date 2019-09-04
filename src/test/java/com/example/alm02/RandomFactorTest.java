@@ -1,9 +1,7 @@
 package com.example.alm02;
 
-import com.example.alm02.RandomFactor;
 import org.junit.Test;
 import static org.junit.Assert.*;
-
 
 public class RandomFactorTest {
     
