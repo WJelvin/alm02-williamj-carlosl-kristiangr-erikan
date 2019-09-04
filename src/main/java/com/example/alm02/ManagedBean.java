@@ -12,23 +12,24 @@ public class ManagedBean implements Serializable {
     private String lastName;
     private int age;
     private String fortune;
-    
+    private int randomNumber;
+    Translator translator = new Translator();
+    RandomFactor randomFactor = new RandomFactor();
 
     public ManagedBean(String firstName, String lastName, int age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
+
+        randomNumber = randomFactor.numberBetween1And10();
     }
 
     public ManagedBean() {
+        randomNumber = randomFactor.numberBetween1And10();
     }
 
     public void calculateFortune() {
-
-        RandomFactor randomFactor = new RandomFactor();
-        int randomNumber = randomFactor.numberBetween1And10();
-        Translator translator = new Translator(firstName, lastName, age, randomNumber);
-        fortune = translator.predictFuture();
+        fortune = translator.predictFuture(firstName, lastName, age, randomNumber);
     }
 
     public String getFirstName() {
@@ -63,4 +64,27 @@ public class ManagedBean implements Serializable {
         this.fortune = fortune;
     }
 
+    public int getRandomNumber() {
+        return randomNumber;
+    }
+
+    public void setRandomNumber(int randomNumber) {
+        this.randomNumber = randomNumber;
+    }
+
+    public Translator getTranslator() {
+        return translator;
+    }
+
+    public void setTranslator(Translator translator) {
+        this.translator = translator;
+    }
+
+    public RandomFactor getRandomFactor() {
+        return randomFactor;
+    }
+
+    public void setRandomFactor(RandomFactor randomFactor) {
+        this.randomFactor = randomFactor;
+    }
 }
