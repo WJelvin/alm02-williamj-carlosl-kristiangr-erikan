@@ -15,14 +15,12 @@ public class ManagedBeanTest extends ManagedBean {
         mb.setRandomNumber(1);
         Translator t = new Translator(mb.getFirstName(), mb.getLastName(), mb.getAge(), mb.getRandomNumber());
         String fortune = t.predictFuture();
-        System.out.println(fortune);
 
-        assertEquals(fortune.equals("This sentenced has a random number that is less than 3. Same rating we give you!"), true);
+        assertEquals(fortune.equals("Neutral3"), true);
         assertEquals(fortune.equals("Blaaaaah"), false);
         mb.setRandomNumber(4);
         fortune = t.predictFuture();
-        System.out.println(fortune);
-        assertEquals(fortune.equals("Your life is void, it is."), true);
+        assertEquals(fortune.equals("Neutral4"), true);
     }
 
     @Test
@@ -31,7 +29,7 @@ public class ManagedBeanTest extends ManagedBean {
         int fakeRandomNumber = 7;
         Translator translator = new Translator(mb.getFirstName(), mb.getLastName(), mb.getAge(), fakeRandomNumber);
         String fortune = translator.predictFuture();
-        assertEquals(fortune, "Your life is void, it is.");
+        assertEquals(fortune, "Neutral2");
     }
 
 
