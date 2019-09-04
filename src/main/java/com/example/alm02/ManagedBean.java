@@ -15,7 +15,6 @@ public class ManagedBean implements Serializable {
     private int randomNumber;
     Translator translator = new Translator();
     RandomFactor randomFactor = new RandomFactor();
-    
 
     public ManagedBean(String firstName, String lastName, int age) {
         this.firstName = firstName;
@@ -30,7 +29,6 @@ public class ManagedBean implements Serializable {
     }
 
     public void calculateFortune() {
-
         fortune = translator.predictFuture(firstName, lastName, age, randomNumber);
     }
 

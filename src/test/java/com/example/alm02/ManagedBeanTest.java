@@ -25,7 +25,6 @@ public class ManagedBeanTest extends ManagedBean {
         assertEquals(fortune.equals("Your life is void, it is."), true);
     }
 
-
     @Test
     public void testSetFortune() {
         ManagedBean mb = new ManagedBean("Urban", "Anderson", 37);
@@ -35,6 +34,9 @@ public class ManagedBeanTest extends ManagedBean {
         assertEquals(fortune, "Your life is void, it is.");
     }
 
+     */
+
+    /*
     @Test
     public void testGetFortune() {
         ManagedBean mb = new ManagedBean("Bob", "Johnson", 49);
@@ -43,6 +45,8 @@ public class ManagedBeanTest extends ManagedBean {
         mb.setFortune(translator.predictFuture(mb.getFirstName(), mb.getLastName(), mb.getAge(), number));
         assertEquals("Your life is void, it is.", mb.getFortune());
     }
+
+     */
 
     @Test
     public void testGetFirstName() {
