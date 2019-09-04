@@ -11,7 +11,8 @@ public class ManagedBean implements Serializable {
     private String firstName;
     private String lastName;
     private int age;
-    private String prediction;
+    private String fortune;
+    
 
     public ManagedBean(String firstName, String lastName, int age) {
         this.firstName = firstName;
@@ -21,12 +22,12 @@ public class ManagedBean implements Serializable {
 
     public ManagedBean() {
     }
-    
+
     public void calculateFortune() {
-        RandomFactor randomFactor = new RandomFactor();
         Translator translator = new Translator();
+        RandomFactor randomFactor = new RandomFactor();
         int randomNumber = randomFactor.numberBetween1And10();
-        prediction = translator.predictFuture(firstName, lastName, age, randomNumber);
+        fortune = translator.predictFuture(firstName, lastName, age, randomNumber);
     }
 
     public String getFirstName() {
@@ -54,13 +55,11 @@ public class ManagedBean implements Serializable {
     }
 
     public String getFortune() {
-        return prediction;
+        return fortune;
     }
 
     public void setFortune(String fortune) {
-        this.prediction = fortune;
+        this.fortune = fortune;
     }
 
-    
-    
 }
