@@ -13,14 +13,14 @@ public class ManagedBeanTest extends ManagedBean {
     public void testCalculateFortune() {
         ManagedBean mb = new ManagedBean("Urban", "Andersson", 36);
         mb.setRandomNumber(1);
-        Translator t = new Translator();
-        String fortune = t.predictFuture(mb.getFirstName(), mb.getLastName(), mb.getAge(), mb.getRandomNumber());
+        Translator t = new Translator(mb.getFirstName(), mb.getLastName(), mb.getAge(), mb.getRandomNumber());
+        String fortune = t.predictFuture();
         System.out.println(fortune);
 
         assertEquals(fortune.equals("This sentenced has a random number that is less than 3. Same rating we give you!"), true);
         assertEquals(fortune.equals("Blaaaaah"), false);
         mb.setRandomNumber(4);
-        fortune = t.predictFuture(mb.getFirstName(), mb.getLastName(), mb.getAge(), mb.getRandomNumber());
+        fortune = t.predictFuture();
         System.out.println(fortune);
         assertEquals(fortune.equals("Your life is void, it is."), true);
     }
@@ -29,12 +29,12 @@ public class ManagedBeanTest extends ManagedBean {
     public void testSetFortune() {
         ManagedBean mb = new ManagedBean("Urban", "Anderson", 37);
         int fakeRandomNumber = 7;
-        Translator translator = new Translator();
-        String fortune = translator.predictFuture(mb.getFirstName(), mb.getLastName(), mb.getAge(), fakeRandomNumber);
+        Translator translator = new Translator(mb.getFirstName(), mb.getLastName(), mb.getAge(), fakeRandomNumber);
+        String fortune = translator.predictFuture();
         assertEquals(fortune, "Your life is void, it is.");
     }
 
-     */
+
 
     /*
     @Test
