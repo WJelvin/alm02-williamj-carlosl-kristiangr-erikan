@@ -10,41 +10,55 @@ public class ManagedBeanTest extends ManagedBean {
 
 
     @Test
-    public void testCalculateFortune() {
-        ManagedBean mb = new ManagedBean("Urban", "Andersson", 36);
-        mb.setRandomNumber(1);
-        Translator t = new Translator(mb.getFirstName(), mb.getLastName(), mb.getAge(), mb.getRandomNumber());
-        String fortune = t.predictFuture();
+    public void testCalculateFortune() throws InterruptedException {
 
-        assertEquals(fortune.equals("Neutral3"), true);
-        assertEquals(fortune.equals("Blaaaaah"), false);
-        mb.setRandomNumber(4);
-        fortune = t.predictFuture();
-        assertEquals(fortune.equals("Neutral4"), true);
+        ManagedBean mb = new ManagedBean("Urban", "Andersson", 36);
+
+        mb.setRandomNumber(2);
+
+        for (int i = 0; i < 30; i++) {
+            System.out.println(mb.calculateFortune());
+        }
+
+        assertEquals(mb.calculateFortune().equals("Neutral2"), true);
+        assertEquals(mb.calculateFortune().equals("Blaaaaah"), false);
+
+        ManagedBean mb2 = new ManagedBean("Urban", "Andersson", 36);
+        mb2.setRandomNumber(4);
+        for (int i = 0; i < 30; i++) {
+            System.out.println(mb2.calculateFortune());
+        }
+
+        assertEquals(mb2.calculateFortune().equals("Neutral2"), true);
     }
 
     @Test
-    public void testSetFortune() {
+    public void testSetFortune() throws NoSuchFieldException, IllegalAccessException {
         ManagedBean mb = new ManagedBean("Urban", "Anderson", 37);
-        int fakeRandomNumber = 7;
-        Translator translator = new Translator(mb.getFirstName(), mb.getLastName(), mb.getAge(), fakeRandomNumber);
-        String fortune = translator.predictFuture();
-        assertEquals(fortune, "Neutral2");
+
+        mb.setFortune("Test");
+
+        final Field field = mb.getClass().getDeclaredField("fortune");
+        field.setAccessible(true);
+        assertEquals("Fields didn't match", field.get(mb), "Test");
+        assertNotEquals("Fields didn't match", field.get(mb), "Testing");
     }
 
 
-
-    /*
     @Test
     public void testGetFortune() {
         ManagedBean mb = new ManagedBean("Bob", "Johnson", 49);
-        Translator translator = new Translator();
+
         int number = 10;
-        mb.setFortune(translator.predictFuture(mb.getFirstName(), mb.getLastName(), mb.getAge(), number));
-        assertEquals("Your life is void, it is.", mb.getFortune());
+        Translator t = new Translator(mb.getFirstName(), mb.getLastName(), mb.getAge(), number);
+
+        mb.setFortune("Testing your future");
+
+        assertEquals("Testing your future", mb.getFortune());
+        assertNotEquals("Testing your future, not", mb.getFortune());
     }
 
-     */
+
 
     @Test
     public void testGetFirstName() {

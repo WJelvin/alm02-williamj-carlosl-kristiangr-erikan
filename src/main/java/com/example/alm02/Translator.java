@@ -11,7 +11,7 @@ public class Translator implements Serializable {
     private String firstName;
     private String lastName;
     private int age;
-    private int randomNumber;
+    private int randomNumber = 0;
 
 
     private List<String> goodFortunes = new ArrayList<>();
@@ -73,6 +73,7 @@ public class Translator implements Serializable {
             prediction = readFortune(badFortunes);
         }
 
+        factor = 0;
         return prediction;
         
     }
@@ -139,7 +140,7 @@ public class Translator implements Serializable {
         if (factor < 7) {
             return 1; //Good
         }
-        else if (factor >= 7 && factor < 21) {
+        else if (factor >= 7 && factor <= 21) {
             return 2; //Neutral
         }
         else {
