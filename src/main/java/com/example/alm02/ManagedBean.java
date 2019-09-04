@@ -24,10 +24,11 @@ public class ManagedBean implements Serializable {
     }
 
     public void calculateFortune() {
-        Translator translator = new Translator();
+
         RandomFactor randomFactor = new RandomFactor();
         int randomNumber = randomFactor.numberBetween1And10();
-        fortune = translator.predictFuture(firstName, lastName, age, randomNumber);
+        Translator translator = new Translator(firstName, lastName, age, randomNumber);
+        fortune = translator.predictFuture();
     }
 
     public String getFirstName() {
