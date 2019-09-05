@@ -13,7 +13,6 @@ public class Translator implements Serializable {
     private int age;
     private int randomNumber;
 
-
     private List<String> goodFortunes = new ArrayList<>();
     private List<String> badFortunes = new ArrayList<>();
     private List<String> neutralFortunes = new ArrayList<>();
@@ -25,35 +24,35 @@ public class Translator implements Serializable {
         this.randomNumber = randomNumber;
         factor = randomNumber;
 
+        goodFortunes.add("Stop eating now. Food poisoning no fun.");
+        goodFortunes.add("Flattery will go far tonight.");
+        goodFortunes.add("It could be better, but it's good enough.");
+        goodFortunes.add("You love Chinese food.");
+        goodFortunes.add("You will receive a fortune cookie.");
+        goodFortunes.add("You are not illiterate.");
+        goodFortunes.add("Never forget a friend. Especially if he owes you.");
 
-        goodFortunes.add("Good1");
-        goodFortunes.add("Good2");
-        goodFortunes.add("Good3");
-        goodFortunes.add("Good4");
-        goodFortunes.add("Good5");
-        goodFortunes.add("Good6");
-        goodFortunes.add("Good7");
+        badFortunes.add("He who laughs last is laughing at you.");
+        badFortunes.add("If you look back, you'll soon be going that way.");
+        badFortunes.add("Fortune not found? Abort, Retry, Ignore.");
+        badFortunes.add("Help! I am being held prisoner in a fortune cookie factory.");
+        badFortunes.add("Some fortune cookies contain no fortune.");
+        badFortunes.add("You will be hungry again in one hour.");
+        badFortunes.add("The fortune you seek is in another cookie.");
 
-        badFortunes.add("Bad1");
-        badFortunes.add("Bad2");
-        badFortunes.add("Bad3");
-        badFortunes.add("Bad4");
-        badFortunes.add("Bad5");
-        badFortunes.add("Bad6");
-        badFortunes.add("Bad7");
-
-        neutralFortunes.add("Neutral1");
-        neutralFortunes.add("Neutral2");
-        neutralFortunes.add("Neutral3");
-        neutralFortunes.add("Neutral4");
-        neutralFortunes.add("Neutral5");
-        neutralFortunes.add("Neutral6");
-        neutralFortunes.add("Neutral7");
+        neutralFortunes.add("Do not mistake temptation for opportunity.");
+        neutralFortunes.add("Some men dream of fortunes, others dream of cookies.");
+        neutralFortunes.add("You have rice in your teeth.");
+        neutralFortunes.add("If a turtle doesn't have a shell, is it naked or homeless?");
+        neutralFortunes.add("Hard work pays off in the future. Laziness pays off now.");
+        neutralFortunes.add("Ask your mom instead of a cookie.");
+        neutralFortunes.add("He who laughs at himself never runs out of things to laugh at.");
 
     }
 
-    public Translator() { }
-    
+    public Translator() {
+    }
+
     public String predictFuture() {
         String prediction = "Your life is void, it is.";
 
@@ -61,50 +60,43 @@ public class Translator implements Serializable {
         factor += calculateLastNameFactor();
         factor += calculateAgeFactor();
 
-        int fortuneType =  decideFortuneType();
+        int fortuneType = decideFortuneType();
 
         if (fortuneType == 1) {
             prediction = readFortune(goodFortunes);
-        }
-        else if (fortuneType == 2) {
+        } else if (fortuneType == 2) {
             prediction = readFortune(neutralFortunes);
-        }
-        else {
+        } else {
             prediction = readFortune(badFortunes);
         }
 
         return prediction;
-        
+
     }
 
     public int calculateFirstNameFactor() {
-        String firstChar = firstName.toLowerCase().substring(0,1);
+        String firstChar = firstName.toLowerCase().substring(0, 1);
 
-            int factor = 0;
+        int factor = 0;
         if (Pattern.matches("[a-g]", firstChar)) {
             factor = 1;
-        }
-        else if (Pattern.matches("[h-o]", firstChar)) {
+        } else if (Pattern.matches("[h-o]", firstChar)) {
             factor = 2;
-        }
-        else {
+        } else {
             factor = 3;
         }
         return factor;
     }
 
     public int calculateLastNameFactor() {
-        String firstChar = lastName.toLowerCase().substring(0,1);
+        String firstChar = lastName.toLowerCase().substring(0, 1);
 
         int factor = 0;
         if (Pattern.matches("[a-g]", firstChar)) {
             factor = 3;
-        }
-
-        else if (Pattern.matches("[h-o]", firstChar)) {
+        } else if (Pattern.matches("[h-o]", firstChar)) {
             factor = 2;
-        }
-        else {
+        } else {
             factor = 1;
 
         }
@@ -117,39 +109,31 @@ public class Translator implements Serializable {
         if (age < 10) {
             factor = 0;
 
-        }
-
-        else if (age >= 10 && age < 33) {
+        } else if (age >= 10 && age < 33) {
             factor = 1;
 
-        }
-        else if (age >= 33 && age < 100) {
+        } else if (age >= 33 && age < 100) {
             factor = 2;
 
-        }
-        else {
+        } else {
             factor = 50;
         }
         return factor;
     }
 
-
-
     public int decideFortuneType() {
         if (factor < 7) {
             return 1; //Good
-        }
-        else if (factor >= 7 && factor < 21) {
+        } else if (factor >= 7 && factor < 21) {
             return 2; //Neutral
-        }
-        else {
+        } else {
             return 3; //BAD!!!
         }
 
     }
 
-    public String readFortune(List<String> fortuneList ) {
-        return fortuneList.get(factor%fortuneList.size());
+    public String readFortune(List<String> fortuneList) {
+        return fortuneList.get(factor % fortuneList.size());
     }
 
     public int getFactor() {
@@ -215,6 +199,5 @@ public class Translator implements Serializable {
     public void setNeutralFortunes(List<String> neutralFortunes) {
         this.neutralFortunes = neutralFortunes;
     }
-
 
 }
