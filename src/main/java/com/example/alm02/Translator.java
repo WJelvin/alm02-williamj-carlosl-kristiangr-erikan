@@ -1,6 +1,7 @@
 package com.example.alm02;
 
 import java.io.Serializable;
+import java.time.temporal.ValueRange;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -132,14 +133,16 @@ public class Translator implements Serializable {
     }
 
     public int calculateAgeFactor() {
+        ValueRange range1 = ValueRange.of(10, 32);
+        ValueRange range2 = ValueRange.of(33, 99);
         int factor = 0;
         if (age < 10) {
             factor = 0;
 
-        } else if (age >= 10 && age < 33) {
+        } else if (range1.isValidIntValue(age)) {
             factor = 1;
 
-        } else if (age >= 33 && age < 100) {
+        } else if (range2.isValidIntValue(age)) {
             factor = 2;
 
         } else {
@@ -149,9 +152,10 @@ public class Translator implements Serializable {
     }
 
     public int decideFortuneType() {
+        ValueRange range = ValueRange.of(7, 20);
         if (factor < 7) {
             return 1; //Good
-        } else if (factor >= 7 && factor < 21) {
+        } else if (range.isValidIntValue(factor)) {
             return 2; //Neutral
         } else {
             return 3; //BAD!!!
