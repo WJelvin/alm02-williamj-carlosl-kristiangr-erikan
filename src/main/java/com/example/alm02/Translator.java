@@ -51,6 +51,30 @@ public class Translator implements Serializable {
     }
 
     public Translator() {
+        goodFortunes.add("Stop eating now. Food poisoning no fun.");
+        goodFortunes.add("Flattery will go far tonight.");
+        goodFortunes.add("It could be better, but it's good enough.");
+        goodFortunes.add("You love Chinese food.");
+        goodFortunes.add("You will receive a fortune cookie.");
+        goodFortunes.add("You are not illiterate.");
+        goodFortunes.add("Never forget a friend. Especially if he owes you.");
+
+        badFortunes.add("He who laughs last is laughing at you.");
+        badFortunes.add("If you look back, you'll soon be going that way.");
+        badFortunes.add("Fortune not found? Abort, Retry, Ignore.");
+        badFortunes.add("Help! I am being held prisoner in a fortune cookie factory.");
+        badFortunes.add("Some fortune cookies contain no fortune.");
+        badFortunes.add("You will be hungry again in one hour.");
+        badFortunes.add("The fortune you seek is in another cookie.");
+
+        neutralFortunes.add("Do not mistake temptation for opportunity.");
+        neutralFortunes.add("Some men dream of fortunes, others dream of cookies.");
+        neutralFortunes.add("You have rice in your teeth.");
+        neutralFortunes.add("If a turtle doesn't have a shell, is it naked or homeless?");
+        neutralFortunes.add("Hard work pays off in the future. Laziness pays off now.");
+        neutralFortunes.add("Ask your mom instead of a cookie.");
+        neutralFortunes.add("He who laughs at himself never runs out of things to laugh at.");
+
     }
 
     public String predictFuture() {
@@ -75,7 +99,10 @@ public class Translator implements Serializable {
     }
 
     public int calculateFirstNameFactor() {
+
+
         String firstChar = firstName.toLowerCase().substring(0, 1);
+
 
         int factor = 0;
         if (Pattern.matches("[a-g]", firstChar)) {
