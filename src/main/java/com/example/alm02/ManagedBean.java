@@ -35,8 +35,7 @@ public class ManagedBean implements Serializable {
         translator.setLastName(lastName);
         translator.setAge(age);
         fortune = translator.predictFuture();
-
-        return !fortune.isEmpty();
+        return true;
     }
 
     public String getFirstName() {
