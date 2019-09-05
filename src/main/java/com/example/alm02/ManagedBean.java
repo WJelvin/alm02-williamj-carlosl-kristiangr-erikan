@@ -28,11 +28,11 @@ public class ManagedBean implements Serializable {
     public ManagedBean() {
         randomNumber = randomFactor.numberBetween1And10();
         translator = new Translator();
-
     }
 
-    public void calculateFortune() {
-        fortune = translator.predictFuture();
+    public boolean calculateFortune() {
+        fortune = translator.predictFuture();   
+        return !fortune.isEmpty();
     }
 
     public String getFirstName() {
