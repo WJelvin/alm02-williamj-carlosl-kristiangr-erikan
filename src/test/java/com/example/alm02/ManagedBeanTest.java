@@ -41,17 +41,17 @@ public class ManagedBeanTest extends ManagedBean {
 
 
 
-    /*
+
     @Test
     public void testGetFortune() {
         ManagedBean mb = new ManagedBean("Bob", "Johnson", 49);
-        Translator translator = new Translator();
         int number = 10;
-        mb.setFortune(translator.predictFuture(mb.getFirstName(), mb.getLastName(), mb.getAge(), number));
-        assertEquals("Your life is void, it is.", mb.getFortune());
+        String expected = "Your life is void, it is.";
+        mb.setFortune("Your life is void, it is.");
+        assertEquals(expected, mb.getFortune());
     }
 
-     */
+
 
     @Test
     public void testGetFirstName() {
