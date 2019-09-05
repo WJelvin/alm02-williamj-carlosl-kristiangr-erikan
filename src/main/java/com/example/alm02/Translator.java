@@ -152,9 +152,10 @@ public class Translator implements Serializable {
     }
 
     public int decideFortuneType() {
+        ValueRange range = ValueRange.of(7, 20);
         if (factor < 7) {
             return 1; //Good
-        } else if (factor >= 7 && factor < 21) {
+        } else if (range.isValidIntValue(factor)) {
             return 2; //Neutral
         } else {
             return 3; //BAD!!!
