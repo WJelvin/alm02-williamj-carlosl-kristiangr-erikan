@@ -17,29 +17,6 @@ public class ManagedBeanTest extends ManagedBean {
 
     }
 
-//    @Test
-//    public void testCalculateFortune() {
-//        ManagedBean mb = new ManagedBean("Urban", "Andersson", 36);
-//        mb.setRandomNumber(1);
-//        Translator t = new Translator(mb.getFirstName(), mb.getLastName(), mb.getAge(), mb.getRandomNumber());
-//        String fortune = t.predictFuture();
-//
-//        assertEquals(fortune.equals("Neutral3"), true);
-//        assertEquals(fortune.equals("Blaaaaah"), false);
-//        mb.setRandomNumber(4);
-//        fortune = t.predictFuture();
-//        assertEquals(fortune.equals("Neutral4"), true);
-//    }
-
-//    @Test
-//    public void testSetFortune() {
-//        ManagedBean mb = new ManagedBean("Urban", "Anderson", 37);
-//        int fakeRandomNumber = 7;
-//        Translator translator = new Translator(mb.getFirstName(), mb.getLastName(), mb.getAge(), fakeRandomNumber);
-//        String fortune = translator.predictFuture();
-//        assertEquals(fortune, "Neutral2");
-//    }
-
 
 
 
