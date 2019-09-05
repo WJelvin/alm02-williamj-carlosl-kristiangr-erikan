@@ -52,7 +52,7 @@ public class Translator implements Serializable {
     }
 
     public Translator() {
-        goodFortunes.add("Stop eating now. Food poisoning no fun.");
+        goodFortunes.add("Stop eating now. Food poisoning is no fun.");
         goodFortunes.add("Flattery will go far tonight.");
         goodFortunes.add("It could be better, but it's good enough.");
         goodFortunes.add("You love Chinese food.");
