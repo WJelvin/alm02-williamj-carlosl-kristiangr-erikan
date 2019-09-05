@@ -14,6 +14,7 @@ public class ManagedBeanTest extends ManagedBean {
         mb.setRandomNumber(9);
         this.translator = new Translator(mb.getFirstName(), mb.getLastName(), mb.getAge(), mb.getRandomNumber());
         assertTrue(mb.calculateFortune());
+
     }
 
 //    @Test
