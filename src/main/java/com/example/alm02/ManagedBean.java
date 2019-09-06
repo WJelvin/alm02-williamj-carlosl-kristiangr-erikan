@@ -11,16 +11,31 @@ public class ManagedBean implements Serializable {
     private String firstName;
     private String lastName;
     private int age;
-    private String prediction;
+    private String fortune;
+    private int randomNumber;
+    Translator translator;
+    RandomFactor randomFactor = new RandomFactor();
 
     public ManagedBean() {
+        randomNumber = randomFactor.numberBetween1And10();
+        translator = new Translator();
     }
-    
-    public void calculateFortune() {
-        RandomFactor randomFactor = new RandomFactor();
-        Translator translator = new Translator();
-        int randomNumber = randomFactor.numberBetween1And10();
-        prediction = translator.predictFuture(firstName, lastName, age, randomNumber);
+
+    public ManagedBean(String firstName, String lastName, int age) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+
+        randomNumber = randomFactor.numberBetween1And10();
+        translator = new Translator(firstName, lastName, age, randomNumber);
+    }
+
+    public boolean calculateFortune() {
+        translator.setFirstName(firstName);
+        translator.setLastName(lastName);
+        translator.setAge(age);
+        fortune = translator.predictFuture();
+        return true;
     }
 
     public String getFirstName() {
@@ -48,13 +63,34 @@ public class ManagedBean implements Serializable {
     }
 
     public String getFortune() {
-        return prediction;
+        return fortune;
     }
 
     public void setFortune(String fortune) {
-        this.prediction = fortune;
+        this.fortune = fortune;
     }
 
-    
-    
+    public int getRandomNumber() {
+        return randomNumber;
+    }
+
+    public void setRandomNumber(int randomNumber) {
+        this.randomNumber = randomNumber;
+    }
+
+    public Translator getTranslator() {
+        return translator;
+    }
+
+    public void setTranslator(Translator translator) {
+        this.translator = translator;
+    }
+
+    public RandomFactor getRandomFactor() {
+        return randomFactor;
+    }
+
+    public void setRandomFactor(RandomFactor randomFactor) {
+        this.randomFactor = randomFactor;
+    }
 }

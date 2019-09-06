@@ -1,9 +1,7 @@
 package com.example.alm02;
 
-import com.example.alm02.RandomFactor;
 import org.junit.Test;
 import static org.junit.Assert.*;
-
 
 public class RandomFactorTest {
     
@@ -16,7 +14,6 @@ public class RandomFactorTest {
 
         for (int i = 0; i < 10000; i++) {
             int random = rf.numberBetween1And10();
-            //System.out.println(random);
             assertTrue(max >= random && min <= random);
         }
         

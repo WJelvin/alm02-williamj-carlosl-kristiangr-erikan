@@ -10,29 +10,31 @@
 
         <h:form id="theForm">
             Your first name: 
-            <h:inputText id="firstName" value="#{controllerBean.firstName}" onfocus="this.select()">
-                <f:validateLength minimum="3" maximum="20"></f:validateLength>
+            <h:inputText id="firstName" value="#{controllerBean.firstName}" onfocus="this.select()" validatorMessage="I cannot read the future based on your first name. Please check your spelling.">
+                <f:validateLength minimum="1" maximum="20"></f:validateLength>
+                <f:validateRegex pattern="[A-Öa-ö]+([ '-][a-öA-Ö]+)*{1,30}$"></f:validateRegex>
             </h:inputText>
             <br/>
             
             Your last name: 
-            <h:inputText id="lastName" value="#{controllerBean.lastName}" onfocus="this.select()">
-                <f:validateLength minimum="3" maximum="20"></f:validateLength>
+            <h:inputText id="lastName" value="#{controllerBean.lastName}" onfocus="this.select()" validatorMessage="I cannot read the future based on your last name. Please check your spelling.">
+                <f:validateLength minimum="1" maximum="20"></f:validateLength>
+                <f:validateRegex pattern="[A-Öa-ö]+([ '-][a-öA-Ö]+)*{1,30}$"></f:validateRegex>
             </h:inputText>
             <br/>
             
             Your age: 
-            <h:inputText id="age" value="#{controllerBean.age}" onfocus="this.select()">
+            <h:inputText id="age" value="#{controllerBean.age}" onfocus="this.select()" converterMessage="Your age can only contain digits between 1 and 130." validatorMessage="I only read the future of people aged 1 to 130!!!!!">
                 <f:validateRequired></f:validateRequired>
-                <f:validateDoubleRange minimum="1" ></f:validateDoubleRange>
+                <f:validateDoubleRange minimum="1" maximum="130"></f:validateDoubleRange>
             </h:inputText>
             
             <br/><br/>
-            <h:commandButton value="Predict my future   " action="#{controllerBean.calculateFortune()}">
+            <h:commandButton value="Predict my future" action="#{controllerBean.calculateFortune()}">
             </h:commandButton>
         </h:form>
         <br/>
-        <h:outputText value="#{controllerBean.fortune}"></h:outputText><br/>
+
 
     </h:body>
 </html>
